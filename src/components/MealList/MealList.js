@@ -3,12 +3,21 @@ import "./MealList.scss";
 import Meal from "../Meal/Meal";
 
 const MealList = (props) => {
+  console.log(props.random);
+  const randomMeals = props.random.length
+    ? props.random.map((meal) => (
+        <li key={meal.idMeal}>
+          <Meal meal={meal} />
+        </li>
+      ))
+    : null;
+
   return (
     <div>
       Meal List
-      <div>
-        <Meal />
-      </div>
+      <ul className="list">{randomMeals}</ul>
+      {/* <div>{props.random.strMeal}</div> */}
+      {/* <Meal meal={randomMeal} /> */}
     </div>
   );
 };
