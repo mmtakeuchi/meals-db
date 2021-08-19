@@ -2,10 +2,10 @@ import React from "react";
 import "./MealList.scss";
 import Meal from "../Meal/Meal";
 
-const MealList = (props) => {
-  console.log(props.random);
-  const randomMeals = props.random.length
-    ? props.random.map((meal) => (
+const MealList = ({ title, meals }) => {
+  console.log(meals);
+  const mealsList = meals.length
+    ? meals.map((meal) => (
         <li key={meal.idMeal}>
           <Meal meal={meal} />
         </li>
@@ -13,12 +13,14 @@ const MealList = (props) => {
     : null;
 
   return (
-    <div>
-      Meal List
-      <ul className="list">{randomMeals}</ul>
+    <React.Fragment>
+      <div className="title">
+        {title === "Random" ? `${title} Meals` : `${title}`}
+      </div>
+      <ul className="list">{mealsList}</ul>
       {/* <div>{props.random.strMeal}</div> */}
       {/* <Meal meal={randomMeal} /> */}
-    </div>
+    </React.Fragment>
   );
 };
 

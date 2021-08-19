@@ -1,13 +1,15 @@
 import React from "react";
 import "./Meal.scss";
-import MealDetails from "../MealDetails/MealDetails";
+import { Link } from "react-router-dom";
 
 const Meal = ({ meal }) => {
-  console.log(meal);
+  // console.log(meal);
   return (
     <div className="meal">
-      <h2>{meal.strMeal}</h2>
-      <img src={`${meal.strMealThumb}/preview`} alt={meal.strMeal} />
+      <Link to={`${meal.idMeal}`} className="link">
+        <h2 className="mealName">{meal.strMeal}</h2>
+        <img src={meal.strMealThumb} alt={meal.strMeal} />
+      </Link>
     </div>
   );
 };
