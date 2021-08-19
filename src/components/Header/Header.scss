@@ -1,13 +1,13 @@
-.footer {
+.header {
   background-color: #161616;
+  /* min-height: 100vh; */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  margin-top: auto;
+  margin-bottom: 0.5em;
   padding: 0.5em 0;
   font-size: calc(10px + 2vmin);
+  border-bottom: 1px solid blue;
   color: white;
-  border-top: 1px solid blue;
 }

@@ -2,12 +2,12 @@ import React from "react";
 import "./MealList.scss";
 import Meal from "../Meal/Meal";
 
-const MealList = ({ title, meals }) => {
-  console.log(meals);
+const MealList = ({ title, meals, selectMeal }) => {
+  // console.log(selectMeal);
   const mealsList = meals.length
     ? meals.map((meal) => (
         <li key={meal.idMeal}>
-          <Meal meal={meal} />
+          <Meal meal={meal} selectMeal={selectMeal} />
         </li>
       ))
     : null;

@@ -1,5 +1,5 @@
 .meal {
-  margin: 1em;
+  margin: 0.5em 1.5em;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -11,17 +11,17 @@
 }
 
 .mealName {
-  color: #5f9ea0;
+  color: #ff8c19;
   margin-bottom: 0.5em;
   font-size: 1em;
   width: 90%;
 }
 
 .mealName:hover {
-  color: #00ced1;
+  color: #ffff19;
 }
 
 img {
-  width: 100%;
+  width: 250px;
   height: 250px;
 }

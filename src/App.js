@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./App.scss";
 import axios from "axios";
+import Header from "./components/Header/Header";
 import MealList from "./components/MealList/MealList";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -11,6 +12,7 @@ import Search from "./components/Search/Search";
 const App = () => {
   const [random, setRandom] = useState([]);
   const [searchMeal, setSearchMeal] = useState([]);
+  const [selectedMeal, setSelectedMeal] = useState("");
 
   const randomMeal = async () => {
     try {
@@ -31,8 +33,6 @@ const App = () => {
   };
 
   const queryMeal = async (query) => {
-    console.log(query);
-
     const queryMeals = await axios
       .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
       .then((response) => response.data.meals)
@@ -43,7 +43,9 @@ const App = () => {
     }
   };
 
-  console.log(searchMeal);
+  const selectMeal = (id) => {
+    setSelectedMeal(id);
+  };
 
   useEffect(() => {
     randomMeal();
@@ -52,22 +54,25 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className="App">
-        <header className="App-header">Meals</header>
+        <Header />
         <Search queryMeal={queryMeal} />
         <div className="main">
           <Switch>
             <Route exact path="/">
-              <MealList title="Random" meals={random} />
+              <MealList title="Random" meals={random} selectMeal={selectMeal} />
             </Route>
             <Route path="/search">
-              <MealList title="Meals" meals={searchMeal} />
+              <MealList
+                title="Meals"
+                meals={searchMeal}
+                selectMeal={selectMeal}
+              />
             </Route>
-            <Route path="/:id">
-              <MealDetails />
+            <Route path="/meals/:id">
+              <MealDetails meal={selectedMeal} />
             </Route>
           </Switch>
         </div>
-
         <Footer />
       </div>
     </BrowserRouter>
