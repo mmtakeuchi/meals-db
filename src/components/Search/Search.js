@@ -14,7 +14,7 @@ const Search = ({ queryMeal }) => {
     e.preventDefault();
     queryMeal(input);
     setInput("");
-    history.push("/search");
+    history.push("/meals/search");
   };
 
   return (
@@ -27,7 +27,9 @@ const Search = ({ queryMeal }) => {
           value={input}
           onChange={handleInput}
         />
-        <input className="submitBtn" type="submit" />
+        <button className="submitBtn" type="submit">
+          Search
+        </button>
       </form>
     </div>
   );

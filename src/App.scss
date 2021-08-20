@@ -1,20 +1,29 @@
 .App {
   height: 100vh;
+  width: 100vw;
+  padding: 0;
   margin: 0;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  background: #282c34;
-  color: white;
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // background: #282c34;
+  // color: white;
 }
 
 .link {
   text-decoration: none;
-  color: white;
+  // color: white;
 }
 
 .main {
-  background: #282c34;
+  // background: #282c34;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  // width: 80%;
 }
 
 .App-logo {
@@ -29,7 +38,7 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  // background-color: #282c34;
   /* min-height: 100vh; */
   display: flex;
   flex-direction: column;

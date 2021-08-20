@@ -12,8 +12,11 @@ const Meal = ({ meal, selectMeal }) => {
   return (
     <div className="meal" onClick={handleSelect}>
       <Link to={`/meals/${meal.idMeal}`} className="link">
-        <h2 className="mealName">{meal.strMeal}</h2>
-        <img src={meal.strMealThumb} alt={meal.strMeal} />
+        <h2 className="mealName">{meal.strMeal || meal.strCategory}</h2>
+        <img
+          src={meal.strMealThumb || meal.strCategoryThumb}
+          alt={meal.strMeal}
+        />
       </Link>
     </div>
   );

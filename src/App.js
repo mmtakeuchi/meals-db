@@ -2,15 +2,17 @@ import React, { useState, useEffect } from "react";
 import "./App.scss";
 import axios from "axios";
 import Header from "./components/Header/Header";
+import Search from "./components/Search/Search";
+import FirstLetter from "./components/FirstLetter/FirstLetter";
 import MealList from "./components/MealList/MealList";
 import Footer from "./components/Footer/Footer";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MealDetails from "./components/MealDetails/MealDetails";
-import Search from "./components/Search/Search";
 // import { randomMeal } from "./api";
 
 const App = () => {
   const [random, setRandom] = useState([]);
+  const [categories, setCategories] = useState([]);
   const [searchMeal, setSearchMeal] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState("");
 
@@ -43,12 +45,34 @@ const App = () => {
     }
   };
 
+  const getCategories = async () => {
+    try {
+      const categories = [];
+      for (let i = 0; i < 4; i++) {
+        categories.push(
+          await axios
+            .get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+            .then((response) => response.data.categories[i])
+        );
+      }
+      if (categories) {
+        setCategories(categories);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const selectMeal = (id) => {
     setSelectedMeal(id);
   };
 
   useEffect(() => {
     randomMeal();
+  }, []);
+
+  useEffect(() => {
+    getCategories();
   }, []);
 
   return (
@@ -60,8 +84,20 @@ const App = () => {
           <Switch>
             <Route exact path="/">
               <MealList title="Random" meals={random} selectMeal={selectMeal} />
+              <MealList
+                title="Popular Ingredients"
+                meals={categories}
+                selectMeal={selectMeal}
+              />
             </Route>
-            <Route path="/search">
+            <Route path="meals/search">
+              <MealList
+                title="Meals"
+                meals={searchMeal}
+                selectMeal={selectMeal}
+              />
+            </Route>
+            <Route path="meals/letter/:id">
               <MealList
                 title="Meals"
                 meals={searchMeal}
@@ -72,6 +108,7 @@ const App = () => {
               <MealDetails meal={selectedMeal} />
             </Route>
           </Switch>
+          <FirstLetter selectMeal={selectMeal} />
         </div>
         <Footer />
       </div>

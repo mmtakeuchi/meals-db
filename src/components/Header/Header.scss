@@ -1,7 +1,7 @@
 .header {
-  background-color: #161616;
   /* min-height: 100vh; */
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -9,5 +9,6 @@
   padding: 0.5em 0;
   font-size: calc(10px + 2vmin);
   border-bottom: 1px solid blue;
-  color: white;
+  //   background-color: #161616;
+  //   color: white;
 }

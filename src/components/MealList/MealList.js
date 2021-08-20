@@ -6,7 +6,7 @@ const MealList = ({ title, meals, selectMeal }) => {
   // console.log(selectMeal);
   const mealsList = meals.length
     ? meals.map((meal) => (
-        <li key={meal.idMeal}>
+        <li key={meal.idMeal || meal.idCategory}>
           <Meal meal={meal} selectMeal={selectMeal} />
         </li>
       ))
@@ -18,8 +18,6 @@ const MealList = ({ title, meals, selectMeal }) => {
         {title === "Random" ? `${title} Meals` : `${title}`}
       </div>
       <ul className="list">{mealsList}</ul>
-      {/* <div>{props.random.strMeal}</div> */}
-      {/* <Meal meal={randomMeal} /> */}
     </React.Fragment>
   );
 };
