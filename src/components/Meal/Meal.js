@@ -2,23 +2,33 @@ import React from "react";
 import "./Meal.scss";
 import { Link } from "react-router-dom";
 
-const Meal = ({ meal, selectMeal }) => {
-  // console.log(meal, selectMeal);
-
-  const handleSelect = (id) => {
+const Meal = ({ type, meal, selectMeal }) => {
+  const handleSelectMeal = (id) => {
     selectMeal(meal.idMeal);
   };
 
+  const handleSelectCateogry = (id) => {
+    selectMeal(meal.strCategory);
+  };
+
   return (
-    <div className="meal" onClick={handleSelect}>
-      <Link to={`/meals/${meal.idMeal}`} className="link">
-        <h2 className="mealName">{meal.strMeal || meal.strCategory}</h2>
-        <img
-          src={meal.strMealThumb || meal.strCategoryThumb}
-          alt={meal.strMeal}
-        />
-      </Link>
-    </div>
+    <React.Fragment>
+      {type === "meal" ? (
+        <div className="meal" onClick={handleSelectMeal}>
+          <Link to={`/meals/${meal.idMeal}`} className="link">
+            <h2 className="mealName">{meal.strMeal}</h2>
+            <img src={meal.strMealThumb} alt={meal.strMeal} />
+          </Link>
+        </div>
+      ) : (
+        <div className="meal" onClick={handleSelectCateogry}>
+          <Link to={`/meals/category/${meal.strCategory}`} className="link">
+            <h2 className="mealName">{meal.strCategory}</h2>
+            <img src={meal.strCategoryThumb} alt={meal.strCategory} />
+          </Link>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 

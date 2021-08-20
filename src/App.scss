@@ -1,6 +1,6 @@
 .App {
   height: 100vh;
-  width: 100vw;
+  max-width: 100vw;
   padding: 0;
   margin: 0;
   // display: flex;
@@ -17,13 +17,13 @@
 }
 
 .main {
-  // background: #282c34;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  // width: 80%;
+  margin: 0;
+  // background: #282c34;
 }
 
 .App-logo {

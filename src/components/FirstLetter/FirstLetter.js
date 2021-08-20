@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./FirstLetter.scss";
 
 const letters = [
@@ -32,6 +33,7 @@ const letters = [
 
 const FirstLetter = ({ selectMeal }) => {
   const handleSelect = (e) => {
+    console.log(e.target.id);
     selectMeal(e.target.id);
   };
 
@@ -49,13 +51,16 @@ const FirstLetter = ({ selectMeal }) => {
   };
 
   const renderLetters = dashLetters().map((letter, i) => (
-    <span key={i} className="letter" id={letters[i]} onClick={handleSelect}>
-      {letter}
-    </span>
+    <Link className="link" to={`/meals/letter/${letters[i]}`} key={i}>
+      <span key={i} className="letter" id={letters[i]} onClick={handleSelect}>
+        {letter}
+        {/* {letter} */}
+      </span>
+    </Link>
   ));
 
   return (
-    <div>
+    <div className="alpha">
       <h3>Browse By Letter</h3>
       <div className="letters">{renderLetters}</div>
     </div>

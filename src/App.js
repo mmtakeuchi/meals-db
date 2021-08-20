@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from "react";
-import "./App.scss";
-import axios from "axios";
 import Header from "./components/Header/Header";
 import Search from "./components/Search/Search";
 import FirstLetter from "./components/FirstLetter/FirstLetter";
 import MealList from "./components/MealList/MealList";
 import Footer from "./components/Footer/Footer";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
 import MealDetails from "./components/MealDetails/MealDetails";
-// import { randomMeal } from "./api";
+import axios from "axios";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
+import "./App.scss";
+import { getRandomMeals, getCategories } from "./api";
+
+const BASE_URL = "https://www.themealdb.com/api/json/v1/1/";
 
 const App = () => {
   const [random, setRandom] = useState([]);
@@ -16,47 +18,45 @@ const App = () => {
   const [searchMeal, setSearchMeal] = useState([]);
   const [selectedMeal, setSelectedMeal] = useState("");
 
-  const randomMeal = async () => {
+  const queryMeal = async (query) => {
     try {
-      const meals = [];
-      for (let i = 0; i < 4; i++) {
-        meals.push(
-          await axios
-            .get(`https://www.themealdb.com/api/json/v1/1/random.php`)
-            .then((response) => response.data.meals[0])
-        );
-      }
-      if (meals) {
-        setRandom(meals);
+      const queryMeals = await axios
+        .get(`${BASE_URL}search.php?s=${query}`)
+        .then((response) => response.data.meals)
+        .catch((err) => console.log(err));
+
+      if (queryMeals) {
+        setSearchMeal(queryMeals);
       }
     } catch (error) {
       console.log(error);
     }
   };
 
-  const queryMeal = async (query) => {
-    const queryMeals = await axios
-      .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${query}`)
-      .then((response) => response.data.meals)
-      .catch((err) => console.log(err));
+  const getFirstLetterMeals = async (id) => {
+    try {
+      const letterMeals = await axios
+        .get(`${BASE_URL}search.php?f=${id}`)
+        .then((response) => response.data.meals)
+        .catch((error) => console.log(error));
 
-    if (queryMeals) {
-      setSearchMeal(queryMeals);
+      if (letterMeals) {
+        setSearchMeal(letterMeals);
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
 
-  const getCategories = async () => {
+  const categoryMeals = async (category) => {
     try {
-      const categories = [];
-      for (let i = 0; i < 4; i++) {
-        categories.push(
-          await axios
-            .get(`https://www.themealdb.com/api/json/v1/1/categories.php`)
-            .then((response) => response.data.categories[i])
-        );
-      }
-      if (categories) {
-        setCategories(categories);
+      const catMeals = await axios
+        .get(`${BASE_URL}filter.php?c=${category}`)
+        .then((response) => response.data.meals)
+        .catch((error) => console.log(error));
+
+      if (catMeals) {
+        setSearchMeal(catMeals);
       }
     } catch (error) {
       console.log(error);
@@ -68,11 +68,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    randomMeal();
+    getRandomMeals().then((data) => setRandom(data));
   }, []);
 
   useEffect(() => {
-    getCategories();
+    // getCategories();
+    getCategories().then((data) => setCategories(data));
   }, []);
 
   return (
@@ -83,23 +84,38 @@ const App = () => {
         <div className="main">
           <Switch>
             <Route exact path="/">
-              <MealList title="Random" meals={random} selectMeal={selectMeal} />
               <MealList
-                title="Popular Ingredients"
-                meals={categories}
+                title="Random Meals"
+                type="meal"
+                meals={random}
                 selectMeal={selectMeal}
               />
+              <MealList
+                title="Popular Categories"
+                type="category"
+                meals={categories}
+                selectMeal={categoryMeals}
+              />
             </Route>
-            <Route path="meals/search">
+            <Route path="/meals/search">
               <MealList
                 title="Meals"
                 meals={searchMeal}
                 selectMeal={selectMeal}
               />
             </Route>
-            <Route path="meals/letter/:id">
+            <Route path="/meals/letter/:id">
               <MealList
                 title="Meals"
+                type="meal"
+                meals={searchMeal}
+                selectMeal={selectMeal}
+              />
+            </Route>
+            <Route path="/meals/category/:id">
+              <MealList
+                title="Meals"
+                type="meal"
                 meals={searchMeal}
                 selectMeal={selectMeal}
               />
@@ -108,7 +124,7 @@ const App = () => {
               <MealDetails meal={selectedMeal} />
             </Route>
           </Switch>
-          <FirstLetter selectMeal={selectMeal} />
+          <FirstLetter selectMeal={getFirstLetterMeals} />
         </div>
         <Footer />
       </div>
