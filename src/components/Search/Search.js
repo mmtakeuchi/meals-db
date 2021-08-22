@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router";
+import { queryMeal } from "../../api";
 import "./Search.scss";
 
-const Search = ({ queryMeal }) => {
+const Search = () => {
   const history = useHistory();
   const [input, setInput] = useState("");
 
@@ -14,7 +15,7 @@ const Search = ({ queryMeal }) => {
     e.preventDefault();
     queryMeal(input);
     setInput("");
-    history.push("/meals/search");
+    history.push(`/meals/search/${input}`);
   };
 
   return (

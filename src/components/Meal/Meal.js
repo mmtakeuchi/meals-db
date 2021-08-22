@@ -10,6 +10,7 @@ const Meal = ({ type, meal, selectMeal }) => {
   const handleSelectCateogry = (id) => {
     selectMeal(meal.strCategory);
   };
+  // console.log(meal, type);
 
   return (
     <React.Fragment>
