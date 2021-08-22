@@ -28,11 +28,6 @@ const App = () => {
                 type="meal"
                 selectMeal={selectMeal}
               />
-              {/* <MealList
-                title="Popular Categories"
-                type="category"
-                selectMeal={selectMeal}
-              /> */}
             </Route>
             <Route path="/meals/search/:id">
               <MealList
@@ -61,7 +56,7 @@ const App = () => {
               <MealDetails meal={selectedMeal} />
             </Route>
           </Switch>
-          <FirstLetter />
+          <FirstLetter selectMeal={selectMeal} />
         </div>
         <Footer />
       </div>

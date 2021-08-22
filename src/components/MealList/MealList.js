@@ -11,10 +11,10 @@ import {
 } from "../../api";
 
 const MealList = ({ selectMeal }) => {
+  const location = useLocation();
   const [randomMeals, setRandomMeals] = useState([]);
   const [catMeals, setCatMeals] = useState([]);
   const [results, setResults] = useState([]);
-  const location = useLocation();
   const path = location.pathname.split("/");
   console.log(location);
   // console.log(results);

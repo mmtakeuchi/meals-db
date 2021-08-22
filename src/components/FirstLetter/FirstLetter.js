@@ -32,6 +32,7 @@ const letters = [
 ];
 
 const FirstLetter = ({ selectMeal }) => {
+  console.log(selectMeal);
   const handleSelect = (e) => {
     console.log(e.target.id);
     selectMeal(e.target.id);
@@ -51,11 +52,14 @@ const FirstLetter = ({ selectMeal }) => {
   };
 
   const renderLetters = dashLetters().map((letter, i) => (
-    <Link className="link" to={`/meals/letter/${letters[i]}`} key={i}>
-      <span key={i} className="letter" id={letters[i]} onClick={handleSelect}>
-        {letter}
-        {/* {letter} */}
-      </span>
+    <Link
+      className="link"
+      to={`/meals/letter/${letters[i]}`}
+      key={i}
+      id={letters[i]}
+      onClick={handleSelect}
+    >
+      <span className="letter">{letter}</span>
     </Link>
   ));
 
