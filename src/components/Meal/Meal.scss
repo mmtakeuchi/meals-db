@@ -1,9 +1,10 @@
 .meal {
-  margin: 0.5em 1.5em;
+  margin: 0.5em 1em;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
 .link {
@@ -11,17 +12,19 @@
 }
 
 .mealName {
-  color: #ff8c19;
+  color: #183a1d;
   margin-bottom: 0.5em;
   font-size: 1em;
-  // width: 90%;
+  text-align: center;
 }
 
-.mealName:hover {
-  color: #ffff19;
+.meal:hover {
+  .mealName {
+    color: #6b9b8a;
+  }
 }
 
 img {
-  width: 240px;
-  height: 240px;
+  width: 100%;
+  height: auto;
 }

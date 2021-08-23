@@ -32,7 +32,7 @@ const MealList = ({ selectMeal }) => {
 
   const mealsList = results.length
     ? results.map((meal) => (
-        <li key={meal.idMeal}>
+        <li key={meal.idMeal} className="listMeal">
           <Meal meal={meal} type="meal" selectMeal={selectMeal} />
         </li>
       ))
@@ -41,7 +41,7 @@ const MealList = ({ selectMeal }) => {
   const renderMeals = (meals) =>
     meals.length
       ? meals.map((meal) => (
-          <li key={meal.idMeal}>
+          <li key={meal.idMeal} className="listMeal">
             <Meal meal={meal} type="meal" selectMeal={selectMeal} />
           </li>
         ))
@@ -50,7 +50,7 @@ const MealList = ({ selectMeal }) => {
   const renderCategories = (categories) =>
     categories.length
       ? categories.map((category) => (
-          <li key={category.idCategory}>
+          <li key={category.idCategory} className="listMeal">
             <Meal meal={category} type="category" selectMeal={selectMeal} />
           </li>
         ))

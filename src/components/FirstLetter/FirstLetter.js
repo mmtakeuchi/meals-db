@@ -65,7 +65,7 @@ const FirstLetter = ({ selectMeal }) => {
 
   return (
     <div className="alpha">
-      <h3>Browse By Letter</h3>
+      <div className="title">Browse By Letter</div>
       <div className="letters">{renderLetters}</div>
     </div>
   );

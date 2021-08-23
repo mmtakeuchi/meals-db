@@ -5,15 +5,28 @@
   align-items: center;
   margin: 1em 0;
   padding: 0;
+  width: 80%;
   list-style: none;
 }
 
 .title {
   margin-top: 1em;
   font-size: 1.5em;
+  font-weight: 750;
+  color: #183a1d;
 }
 
 .noneFound {
   margin: 1em;
   font-size: 1.5em;
+}
+
+.listMeal {
+  flex: 25%;
+}
+
+@media (max-width: 800px) {
+  .listMeal {
+    flex: 50%;
+  }
 }

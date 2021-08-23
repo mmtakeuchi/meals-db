@@ -2,8 +2,15 @@
   margin: 1em 0 2em 0;
 }
 
-.letter {
+.title {
+  margin: 1em 0 0 0;
+  font-size: 1.5em;
+  font-weight: 750;
+  color: #183a1d;
+}
+
+.letters {
+  margin: 1em 0 1em 0;
   text-transform: uppercase;
-  border: none;
-  background: white;
+  color: #183a1d;
 }

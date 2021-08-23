@@ -1,5 +1,4 @@
 .header {
-  /* min-height: 100vh; */
   display: flex;
   width: 100%;
   flex-direction: column;
@@ -8,7 +7,10 @@
   //   margin-bottom: 1em;
   padding: 0.5em 0;
   font-size: calc(10px + 2vmin);
-  border-bottom: 1px solid blue;
   //   background-color: #161616;
-  //   color: white;
+  background-color: #fefbe9;
+}
+
+.text {
+  color: #ff8c19;
 }

@@ -5,7 +5,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   return (
     <div className="footer">
-      <div className="copyR">© 2021 Meal Lookup</div>
+      <div className="copyR">
+        <span className="footText">© 2021 Meal Lookup</span>
+      </div>
       <div className="socials">
         <Link
           className="link"
@@ -14,7 +16,7 @@ const Footer = () => {
           }}
           target="_blank"
         >
-          GitHub
+          <span className="footText">GitHub</span>
         </Link>
       </div>
     </div>
