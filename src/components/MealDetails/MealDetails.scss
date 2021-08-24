@@ -1,15 +1,55 @@
 .details {
-  //   display: flex;
   justify-content: center;
   align-items: center;
   margin: 1rem;
   width: 80%;
+  font-size: 1.25em;
 }
 
-.section {
-  margin-bottom: 0.5em;
+.topDetails {
+  width: 100%;
+  display: flex;
 }
 
 .mealIngredients {
   text-transform: capitalize;
+  width: 50%;
+  text-align: start;
+}
+
+.mealName {
+  width: 50%;
+  float: left;
+}
+
+.mealImg {
+  width: 80%;
+  height: 40vh;
+}
+
+.section {
+  margin-bottom: 0.5em;
+  text-align: center;
+}
+
+.instructions {
+  // width: 80%;
+  justify-content: center;
+  align-items: center;
+  justify-self: center;
+  align-self: center;
+  text-align: start;
+}
+
+.count {
+  font-weight: bold;
+  margin-right: 0.25em;
+}
+
+.listItem {
+  margin: 0.5em;
+}
+
+.lists {
+  list-style: outside;
 }

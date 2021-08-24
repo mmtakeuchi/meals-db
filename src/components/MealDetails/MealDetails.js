@@ -6,6 +6,8 @@ import "./MealDetails.scss";
 const MealDetails = ({ meal }) => {
   const { id } = useParams();
   const [details, setDetails] = useState({});
+  const [instructions, setInstructions] = useState("");
+  useEffect(() => getMeal(), []);
 
   const getMeal = async () => {
     const meal = await axios
@@ -15,6 +17,7 @@ const MealDetails = ({ meal }) => {
 
     if (meal) {
       setDetails(meal);
+      setInstructions(meal.strInstructions);
     }
   };
 
@@ -40,33 +43,58 @@ const MealDetails = ({ meal }) => {
     return combineIngredientMeasure(ingredients, measure);
   };
 
-  console.log(details);
+  const listInstructions = () => {
+    const steps = instructions.split(".");
+    return steps.slice(0, -1);
+  };
 
-  useEffect(() => getMeal(), []);
-
+  // console.log(listInstructions());
   return (
-    <div className="details">
-      <div className="mealImg">
-        <h2>{details.strMeal}</h2>
-        <img src={details.strMealThumb} alt={details.strMeal} />
-      </div>
-      <div className="category">
-        {/* <Link className="link">{details.strCategory}</Link> */}
-        {details.strCategory}
-      </div>
-      <div className="mealIngredients">
-        <h2 className="section">Ingredients</h2>
-        <ul>
-          {getIngredients().map((ingredient, i) => (
-            <li key={i}>{ingredient}</li>
-          ))}
-        </ul>
-      </div>
-      <div className="instructions">
-        <h2 className="section">Instructions</h2>
-        {details.strInstructions}
-      </div>
-    </div>
+    <React.Fragment>
+      {details && (
+        <div className="details">
+          <div className="topDetails">
+            <div className="mealName">
+              <h2>{details.strMeal}</h2>
+              <img
+                className="mealImg"
+                src={details.strMealThumb}
+                alt={details.strMeal}
+              />
+              <div className="category">
+                <Link
+                  className="link"
+                  to={`/meals/category/${details.strCategory}`}
+                >
+                  {details.strCategory}
+                </Link>
+              </div>
+            </div>
+            <div className="mealIngredients">
+              <h2 className="section">Ingredients</h2>
+              <ul className="lists">
+                {getIngredients().map((ingredient, i) => (
+                  <li key={i} className="listItem">
+                    {ingredient}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="instructions">
+            <h2 className="section">Instructions</h2>
+            <ul className="lists">
+              {listInstructions().map((step, i) => (
+                <li key={i} className="listItem">
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )}
+    </React.Fragment>
   );
 };
 

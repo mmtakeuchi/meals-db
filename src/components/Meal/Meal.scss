@@ -19,6 +19,7 @@
 }
 
 .meal:hover {
+  transform: translateY(-10px);
   .mealName {
     color: #6b9b8a;
   }

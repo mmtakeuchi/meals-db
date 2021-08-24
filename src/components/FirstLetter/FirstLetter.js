@@ -32,35 +32,50 @@ const letters = [
 ];
 
 const FirstLetter = ({ selectMeal }) => {
-  console.log(selectMeal);
   const handleSelect = (e) => {
-    console.log(e.target.id);
     selectMeal(e.target.id);
   };
 
-  const dashLetters = () => {
-    const result = [];
-    for (let i = 0; i < letters.length; i++) {
-      if (i !== letters.length - 1) {
-        result.push(`${letters[i]} - `);
-      } else {
-        result.push(letters[i]);
-      }
-    }
+  // const dashLetters = () => {
+  //   const result = [];
+  //   for (let i = 0; i < letters.length; i++) {
+  //     if (i !== letters.length - 1) {
+  //       result.push(`${letters[i]} - `);
+  //     } else {
+  //       result.push(letters[i]);
+  //     }
+  //   }
 
-    return result;
-  };
+  //   return result;
+  // };
 
-  const renderLetters = dashLetters().map((letter, i) => (
-    <Link
-      className="link"
-      to={`/meals/letter/${letters[i]}`}
-      key={i}
-      id={letters[i]}
-      onClick={handleSelect}
-    >
-      <span className="letter">{letter}</span>
-    </Link>
+  const renderLetters = letters.map((letter, i) => (
+    <React.Fragment>
+      {i === letters.length - 1 ? (
+        <Link
+          className="link"
+          to={`/meals/letter/${letters[i]}`}
+          key={i}
+          id={letters[i]}
+          onClick={handleSelect}
+        >
+          <span className="letter">{letter}</span>
+        </Link>
+      ) : (
+        <React.Fragment key={i}>
+          <Link
+            className="link"
+            to={`/meals/letter/${letters[i]}`}
+            key={i}
+            id={letters[i]}
+            onClick={handleSelect}
+          >
+            <span className="letter">{letter}</span>
+          </Link>
+          <span className="dash"> / </span>
+        </React.Fragment>
+      )}
+    </React.Fragment>
   ));
 
   return (

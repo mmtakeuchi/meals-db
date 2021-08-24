@@ -12,5 +12,15 @@
 .letters {
   margin: 1em 0 1em 0;
   text-transform: uppercase;
-  color: #183a1d;
+}
+
+.letter {
+  // color: #183a1d;
+  margin: 0 0.25em;
+  color: #ff8c19;
+}
+
+.letter:hover {
+  // color: #6b9b8a;
+  color: #f6c453;
 }
