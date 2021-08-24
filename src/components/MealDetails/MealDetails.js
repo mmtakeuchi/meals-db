@@ -66,13 +66,15 @@ const MealDetails = ({ meal }) => {
                   className="link"
                   to={`/meals/category/${details.strCategory}`}
                 >
-                  {details.strCategory}
+                  <button>
+                    <span className="letter">{details.strCategory}</span>
+                  </button>
                 </Link>
               </div>
             </div>
             <div className="mealIngredients">
               <h2 className="section">Ingredients</h2>
-              <ul className="lists">
+              <ul className="ingredientsList">
                 {getIngredients().map((ingredient, i) => (
                   <li key={i} className="listItem">
                     {ingredient}

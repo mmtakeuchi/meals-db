@@ -23,11 +23,12 @@
 }
 
 .mealImg {
-  width: 80%;
+  width: 70%;
   height: 40vh;
 }
 
 .section {
+  width: 100%;
   margin-bottom: 0.5em;
   text-align: center;
 }
@@ -52,4 +53,14 @@
 
 .lists {
   list-style: outside;
+}
+
+.ingredientsList {
+  width: 100%;
+  column-count: 2;
+}
+
+button {
+  background: inherit;
+  font-size: 1.1em;
 }
