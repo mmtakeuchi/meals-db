@@ -11,7 +11,7 @@
   text-decoration: none;
 }
 
-.mealName {
+.mealTitle {
   color: #183a1d;
   margin-bottom: 0.5em;
   font-size: 1em;
@@ -25,7 +25,8 @@
   }
 }
 
-img {
-  width: 100%;
+.cardImg {
+  width: 80%;
   height: auto;
+  max-width: 20em;
 }
