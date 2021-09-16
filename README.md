@@ -9,13 +9,12 @@ https://meals-lookup-react.netlify.app/
 ## Screenshots
 
 Meals Homepage
-![Screenshot](meals_homepage.png)
 
-Meals List
-![Screenshot](meals_list.png)
+<img src="./public/images/meals_homepage.png" width=1000 ><br/>
 
 Meal Details
-![Screenshot](meal_details.png)
+
+<img src="./public/images/meal_details.png" width=1000 >
 
 ## License
 
