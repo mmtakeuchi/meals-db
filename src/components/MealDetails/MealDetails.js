@@ -48,7 +48,6 @@ const MealDetails = ({ meal }) => {
     return steps.slice(0, -1);
   };
 
-  // console.log(listInstructions());
   return (
     <React.Fragment>
       {details && (

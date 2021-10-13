@@ -30,27 +30,13 @@ const App = () => {
               />
             </Route>
             <Route path="/meals/search/:id">
-              <MealList
-                title="Meals"
-                // meals={searchMeal}
-                selectMeal={selectMeal}
-              />
+              <MealList title="Meals" selectMeal={selectMeal} />
             </Route>
             <Route path="/meals/letter/:id">
-              <MealList
-                title="Meals"
-                type="meal"
-                // meals={searchMeal}
-                selectMeal={selectMeal}
-              />
+              <MealList title="Meals" type="meal" selectMeal={selectMeal} />
             </Route>
             <Route path="/meals/category/:id">
-              <MealList
-                title="Meals"
-                type="meal"
-                // meals={searchMeal}
-                selectMeal={selectMeal}
-              />
+              <MealList title="Meals" type="meal" selectMeal={selectMeal} />
             </Route>
             <Route path="/meals/:id">
               <MealDetails meal={selectedMeal} />

@@ -36,19 +36,6 @@ const FirstLetter = ({ selectMeal }) => {
     selectMeal(e.target.id);
   };
 
-  // const dashLetters = () => {
-  //   const result = [];
-  //   for (let i = 0; i < letters.length; i++) {
-  //     if (i !== letters.length - 1) {
-  //       result.push(`${letters[i]} - `);
-  //     } else {
-  //       result.push(letters[i]);
-  //     }
-  //   }
-
-  //   return result;
-  // };
-
   const renderLetters = letters.map((letter, i) => (
     <React.Fragment>
       {i === letters.length - 1 ? (

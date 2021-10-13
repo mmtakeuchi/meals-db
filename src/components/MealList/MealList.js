@@ -16,8 +16,6 @@ const MealList = ({ selectMeal }) => {
   const [catMeals, setCatMeals] = useState([]);
   const [results, setResults] = useState([]);
   const path = location.pathname.split("/");
-  console.log(location);
-  // console.log(results);
 
   useEffect(() => {
     setResults([]);
